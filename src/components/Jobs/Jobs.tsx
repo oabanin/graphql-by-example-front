@@ -1,20 +1,25 @@
 import {useQuery} from "@apollo/client";
-import {GET_JOBS} from "../../queries";
 import {Fragment} from "react";
+import {Job} from "../../gql/graphql";
+import {JOBS_QUERY} from "../../graphql/queries";
+
 
 const Jobs = () => {
-    const {data} = useQuery(GET_JOBS);
-    const companies = data?.companies || [];
+    const {data, error} = useQuery<{ jobs: Job[] }>(JOBS_QUERY);
+    if (error) return <>{error.message}</>;
+    const jobs = data?.jobs || [];
     return (
         <>
-            <div style={{display: "grid", gridTemplateColumns: "repeat(2, 1fr)"}}>
-                <div>Name</div>
+            <div style={{display: "grid", gridTemplateColumns: "repeat(3, 1fr)"}}>
+                <div>Title</div>
                 <div>Description</div>
-                {companies.map((item: any) => {
+                <div>Company Name</div>
+                {jobs.map((item) => {
                     return (
                         <Fragment key={item.id}>
-                            <div> {item.name}</div>
+                            <div> {item.title}</div>
                             <div>{item.description}</div>
+                            <div>{item.company?.name}</div>
                         </Fragment>
                     );
                 })}

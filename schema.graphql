@@ -30,7 +30,6 @@ type Query {
 }
 
 input CreateJobInput {
-    companyId: ID
     description: String
     title: String
 }
