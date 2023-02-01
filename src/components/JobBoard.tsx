@@ -1,5 +1,5 @@
 import JobList from './JobList';
-import { useJobs } from '../graphql/hooks';
+import { useJobs } from '../gql/hooks';
 
 function JobBoard() {
   const { jobs, loading, error } = useJobs();

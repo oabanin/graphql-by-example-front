@@ -1,9 +1,28 @@
-import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
+import { ApolloClient, gql, InMemoryCache, HttpLink, ApolloLink, concat} from '@apollo/client';
+import {getAccessToken} from "../auth";
 
 const GRAPHQL_URL = 'http://localhost:9000/graphql';
 
+
+
+const httpLink = new HttpLink({ uri: 'http://localhost:9000/graphql' });
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+  // add the authorization to the headers
+  operation.setContext(({ headers = {} }) => ({
+    headers: {
+      ...headers,
+      Authorization: getAccessToken() ? 'Bearer '+ getAccessToken() : null,
+    }
+  }));
+
+  return forward(operation);
+})
+
+
 export const client = new ApolloClient({
   uri: GRAPHQL_URL,
+  //link: concat(authMiddleware, httpLink),
   cache: new InMemoryCache(),
 });
 

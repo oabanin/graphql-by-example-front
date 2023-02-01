@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import { useCompany } from '../graphql/hooks';
+import { useCompany } from '../gql/hooks';
 import JobList from './JobList';
 
 function CompanyDetail() {

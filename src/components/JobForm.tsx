@@ -1,6 +1,6 @@
 import {SyntheticEvent, useState} from 'react';
 import { useNavigate } from 'react-router';
-import { useCreateJob } from '../graphql/hooks';
+import { useCreateJob } from '../gql/hooks';
 
 function JobForm() {
   const navigate = useNavigate();

@@ -24,7 +24,7 @@ function LoginForm({ onLogin }:{onLogin():void}) {
           Email
         </label>
         <div className="control">
-          <input className="input" type="email" required value={email}
+          <input className="input" type="text" required value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
         </div>

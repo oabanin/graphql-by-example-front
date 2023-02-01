@@ -22,7 +22,8 @@ export function useCreateJob() {
         context: {
           headers: { 'Authorization': 'Bearer ' + getAccessToken() },
         },
-        update: (cache, { data: { job } }) => {
+        update: (cache, result) => {
+          const { data: { job } } = result;
           cache.writeQuery({
             query: JOB_QUERY,
             variables: { id: job.id },

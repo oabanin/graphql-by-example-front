@@ -9,7 +9,7 @@ import JobBoard from './components/JobBoard';
 import JobDetail from './components/JobDetail';
 import JobForm from './components/JobForm';
 import NavBar from './components/NavBar';
-import {client} from './graphql/queries';
+import {client} from './gql/queries';
 import 'bulma/css/bulma.css';
 
 function App() {

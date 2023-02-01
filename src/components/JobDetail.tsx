@@ -1,6 +1,6 @@
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { useJob } from '../graphql/hooks';
+import { useJob } from '../gql/hooks';
 
 function JobDetail() {
   const { jobId } = useParams();
